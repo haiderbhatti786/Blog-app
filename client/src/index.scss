@@ -9,6 +9,7 @@ $lightgreen: #b9e7e7;
 
 .app {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 
   .container {
@@ -21,6 +22,7 @@ $lightgreen: #b9e7e7;
 
     .auth {
       display: flex;
+
       align-items: center;
       justify-content: center;
       flex-direction: column;
@@ -128,10 +130,11 @@ $lightgreen: #b9e7e7;
     }
 
     footer {
-      margin-top: 100px;
+      margin-top: 150px;
       padding: 20px;
       background-color: $lightgreen;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       font-size: 12px;
@@ -142,15 +145,20 @@ $lightgreen: #b9e7e7;
     }
 
     .home {
+      // display: flex;
       .posts {
-        margin-top: 50px;
+        margin-top: 70px;
+        margin-bottom: 50px;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
+        // justify-content: space-between;
         gap: 150px;
 
         .post {
           display: flex;
-          gap: 100px;
+          flex-wrap: wrap;
+          gap: 200px;
 
           &:nth-child(2n + 1) {
             flex-direction: row-reverse;
@@ -181,8 +189,10 @@ $lightgreen: #b9e7e7;
           .contentp {
             flex: 3;
             display: flex;
+            flex-wrap: wrap;
             flex-direction: column;
-            gap: 50px;
+            // gap: 180px;
+            align-items: flex-start;
             justify-content: space-between;
 
             button {
@@ -208,6 +218,7 @@ $lightgreen: #b9e7e7;
 
     .single {
       display: flex;
+      flex-wrap: wrap;
       gap: 50px;
 
       .content {
@@ -224,6 +235,7 @@ $lightgreen: #b9e7e7;
 
         .user {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           gap: 10px;
           font-size: 14px;
@@ -242,6 +254,7 @@ $lightgreen: #b9e7e7;
 
         .edit {
           display: flex;
+          flex-wrap: wrap;
           gap: 5px;
 
           img {
@@ -268,6 +281,7 @@ $lightgreen: #b9e7e7;
       .menu {
         flex: 2;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         gap: 25px;
 
@@ -278,6 +292,7 @@ $lightgreen: #b9e7e7;
 
         .post {
           display: flex;
+          flex-wrap: wrap;
           flex-direction: column;
           gap: 10px;
 
@@ -314,11 +329,13 @@ $lightgreen: #b9e7e7;
     .add {
       margin-top: 20px;
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
 
       .content {
         flex: 5;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         gap: 20px;
         input {
@@ -330,11 +347,13 @@ $lightgreen: #b9e7e7;
     .menu {
       flex: 2;
       display: flex;
+      flex-wrap: wrap;
       flex-direction: column;
       gap: 20px;
       // background-color: red;
       .item {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         // align-items: center;
         justify-content: center;
@@ -362,14 +381,29 @@ $lightgreen: #b9e7e7;
             color: teal;
             background-color: white;
             border: 1px solid teal;
-            padding: 3px 5px;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            &:hover {
+              background-color: rgba(0, 128, 128, 0.08);
+            }
           }
           :last-child {
             cursor: pointer;
             color: white;
             background-color: teal;
             border: 1px solid teal;
-            padding: 3px 5px;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            &:hover {
+              background-color: #008080;
+              border-color: #008080;
+            }
           }
         }
         .cat {
@@ -451,6 +485,36 @@ $lightgreen: #b9e7e7;
 
     &:hover {
       background-color: #e6e6e6;
+    }
+  }
+}
+
+.category-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+
+  .category-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+
+    input {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid teal;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+
+      &:checked {
+        background-color: teal;
+      }
     }
   }
 }

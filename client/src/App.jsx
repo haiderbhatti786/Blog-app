@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.scss";
+import { ToastContainer } from "react-toastify";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,9 +14,11 @@ import Write from "./pages/Write";
 import Home from "./pages/Home";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+
 const Layout = () => {
   return (
     <>
+      <ToastContainer autoClose={5000} />
       <Navbar />
       {/* outlet stattic ho ga */}
       <Outlet />
@@ -52,6 +55,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
 ]);
+
 const App = () => {
   return (
     <>

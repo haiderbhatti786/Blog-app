@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -22,7 +24,11 @@ const Register = () => {
         "http://localhost:5000/auth/register", // ✔️ yad kro yhai lagana hai
         input
       );
-      navigate("/login");
+      toast.success(" User created!", { position: "top-right" });
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
     } catch (error) {
       setError(error.response.data);
     }
@@ -60,6 +66,7 @@ const Register = () => {
           Have an Account <Link to="/login">Login</Link>
         </span>
       </form>
+      <ToastContainer />
     </div>
   );
 };
