@@ -182,6 +182,7 @@ $lightgreen: #b9e7e7;
             img {
               width: 100%;
               min-height: 400px;
+              // background-size: cover;
               object-fit: cover;
             }
           }
@@ -440,9 +441,12 @@ $lightgreen: #b9e7e7;
       padding: 10px;
       font-size: 14px;
       line-height: 1.5;
-      color: black;
+      color: black !important ;
       border: none;
       text-align: left;
+    }
+    .ql-snow .ql-editor {
+      color: #333 !important; // Or your preferred default color
     }
   }
   .ql-editor {

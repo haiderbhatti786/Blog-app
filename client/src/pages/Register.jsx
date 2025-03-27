@@ -22,8 +22,12 @@ const Register = () => {
     try {
       const res = await axios.post(
         "http://localhost:5000/auth/register", // ✔️ yad kro yhai lagana hai
-        input
+        input,
+        {
+          withCredentials: "true",
+        }
       );
+      console.log(res);
       toast.success(" User created!", { position: "top-right" });
 
       setTimeout(() => {

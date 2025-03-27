@@ -10,7 +10,6 @@ import moment from "moment";
 
 const modules = {
   toolbar: [
-    [{ header: [false] }],
     ["bold", "italic", "underline"],
     [{ list: "ordered" }, { list: "bullet" }],
     ["link"],
