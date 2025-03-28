@@ -1,59 +1,69 @@
 import { Link } from "react-router-dom";
-import image from "../img/logo.png";
-import { useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
+import { useContext, useState } from "react";
 import { authContext } from "../context/authContext.jsx";
+import { FaBars, FaTimes } from "react-icons/fa"; // Import icons for mobile menu
+import image from "../img/logo.png";
 
 const Navbar = () => {
   const { currUser, logout } = useContext(authContext);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <>
-      <div className="navbar">
-        <div className="container">
-          <div className="logo">
-            <Link to="/">
-              <img src={image} alt="logo" />
-            </Link>
-          </div>
-          <div className="links">
-            <Link className="link" to="/?cat=art">
-              <h6>ART</h6>
-            </Link>
-            <Link className="link" to="/?cat=science">
-              <h6>SCIENCE</h6>
-            </Link>
-            <Link className="link" to="/?cat=tech">
-              <h6>TECHNOLOGY</h6>
-            </Link>
-            <Link className="link" to="/?cat=cinema">
-              <h6>CINEMA</h6>
-            </Link>
-            <Link className="link" to="/?cat=design">
-              <h6>DESIGN</h6>
-            </Link>
-            <Link className="link" to="/?cat=food">
-              <h6>FOOD</h6>
-            </Link>
-            <span className="user">
-              <b>{currUser?.username}</b>
-            </span>
-            {currUser ? (
-              <span className="user" onClick={logout}>
-                <b>Logout</b>
-              </span>
-            ) : (
-              <Link className="link" to="/login">
-                Login
-              </Link>
-            )}
-            <span className="write">
-              <Link className="user" to="/write">
+    <nav className="navbar">
+      <div className="container">
+        <Link to="/" className="logo">
+          <img src={image} alt="logo" />
+        </Link>
+        <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="links mobile-open"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4 }}
+            >
+              {["art", "science", "tech", "cinema", "design", "food"].map(
+                (cat) => (
+                  <motion.div
+                    key={cat}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Link className="link" to={`/?cat=${cat}`}>
+                      {cat.toUpperCase()}
+                    </Link>
+                  </motion.div>
+                )
+              )}
+              {currUser ? (
+                <>
+                  <span className="user">{currUser.username}</span>
+                  <span className="logout" onClick={logout}>
+                    Logout
+                  </span>
+                </>
+              ) : (
+                <Link className="link" to="/login">
+                  Login
+                </Link>
+              )}
+              <Link className="write" to="/write">
                 Write
               </Link>
-            </span>
-          </div>
-        </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </>
+    </nav>
   );
 };
 

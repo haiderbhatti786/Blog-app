@@ -6,9 +6,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/auth": {
-        target: "http://localhost:5000",
+        target: "https://your-backend-url.com", // Replace with your backend URL
         changeOrigin: true,
-        secure: false,
+        secure: true,
       },
     },
   },

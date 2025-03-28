@@ -22,7 +22,6 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(input);
-      // 🎉 Toaster Notification for Success
       toast.success("Login Successful!", { position: "top-right" });
 
       setTimeout(() => {
@@ -30,15 +29,12 @@ const Login = () => {
       }, 1500);
     } catch (error) {
       console.log(error);
-
-      // ❌ Error Handling for Toaster
       toast.error(
         error.response ? error.response.data.error : "Login Failed!",
         {
           position: "top-right",
         }
       );
-
       setError(
         error.response ? error.response.data : { error: "Network Error" }
       );
@@ -48,28 +44,32 @@ const Login = () => {
   return (
     <div className="auth">
       <h1>Login</h1>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="username"
+          placeholder="Username"
           name="username"
+          value={input.username}
           onChange={handleChange}
+          required
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           name="password"
+          value={input.password}
           onChange={handleChange}
+          required
         />
-        <button onClick={handleSubmit}>Login</button>
-        {error && <p>{JSON.stringify(error.error)}</p>}
+        <button type="submit" className="primary">
+          Login
+        </button>
+        {error && <p className="error">{error.error}</p>}
         <span>
           Don't have an account? <Link to="/register">Register</Link>
         </span>
       </form>
-
-      {/* ✅ ToastContainer yahan add karo */}
-      <ToastContainer />
+      <ToastContainer autoClose={3000} />
     </div>
   );
 };

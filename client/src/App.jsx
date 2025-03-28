@@ -7,6 +7,7 @@ import {
   Route,
   Outlet,
 } from "react-router-dom";
+import { AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Single from "./pages/Single";
@@ -20,8 +21,9 @@ const Layout = () => {
     <>
       <ToastContainer autoClose={5000} />
       <Navbar />
-      {/* outlet stattic ho ga */}
-      <Outlet />
+      <AnimatePresence mode="wait">
+        <Outlet />
+      </AnimatePresence>
       <Footer />
     </>
   );
@@ -34,15 +36,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />, // outlet me pehle home ai ga
+        element: <Home />,
       },
       {
-        path: "/post/:id", // post ka path jis me us ke id
-        element: <Single />, // outlet me single ai ga
+        path: "/post/:id",
+        element: <Single />,
       },
       {
         path: "/write",
-        element: <Write />, // outlet me write ai ga
+        element: <Write />,
       },
     ],
   },
@@ -58,13 +60,11 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <>
-      <div className="app">
-        <div className="container">
-          <RouterProvider router={router} />
-        </div>
+    <div className="app">
+      <div className="container">
+        <RouterProvider router={router} />
       </div>
-    </>
+    </div>
   );
 };
 

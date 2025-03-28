@@ -7,6 +7,7 @@ import axios from "axios";
 import moment from "moment";
 import { authContext } from "../context/authContext";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion"; // Import motion
 
 const Single = () => {
   const [post, setPost] = useState(null);
@@ -44,7 +45,13 @@ const Single = () => {
   if (!post) return <p>Loading post...</p>;
 
   return (
-    <div className="single">
+    <motion.div
+      className="single"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="content">
         {post?.img && <img src={`../upload/${post.img}`} alt="post" />}{" "}
         {/* Display the post image */}
@@ -81,7 +88,7 @@ const Single = () => {
         <p>{post.desc}</p>
       </div>
       <Menu cat={post.cat} />
-    </div>
+    </motion.div>
   );
 };
 
