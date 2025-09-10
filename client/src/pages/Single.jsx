@@ -20,7 +20,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/posts/${postId}`);
+        const res = await axios.get(`https://blog-app-n2gj.vercel.app/posts/${postId}`);
         setPost(res.data);
       } catch (err) {
         console.log("Error fetching post:", err);
@@ -31,7 +31,7 @@ const Single = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/posts/${postId}`, {
+      await axios.delete(`https://blog-app-n2gj.vercel.app/posts/${postId}`, {
         withCredentials: true, // THIS IS CRUCIAL
       });
       toast.success("Post deleted successfully!");
