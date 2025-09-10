@@ -6,11 +6,12 @@ import axios from "axios";
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const cat = useLocation().search;
+  const baseUrl = "https://blog-app-n2gj.vercel.app"
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/posts${cat}`);
+        const res = await axios.get(`${baseUrl}/posts${cat}`);
         setPosts(res.data);
       } catch (err) {
         console.log(err);
