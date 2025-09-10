@@ -15,6 +15,10 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.get("/",(req,res)=>{
+  res.send("server is live!")
+  
+})
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
