@@ -21,7 +21,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/auth/register", // ✔️ yad kro yhai lagana hai
+        "https://blog-app-n2gj.vercel.app/auth/register", // ✔️ yad kro yhai lagana hai
         input,
         {
           withCredentials: "true",
