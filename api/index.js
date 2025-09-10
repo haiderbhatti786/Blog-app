@@ -10,8 +10,8 @@ import multer from "multer";
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://blog-app-clinet.vercel.app/", // Frontend ka origin
-    credentials: true, // Agar cookies ya headers send karne hain to true rakho
+    origin: "*", // Frontend ka origin
+  // Agar cookies ya headers send karne hain to true rakho
   })
 );
 app.use(cookieParser());
