@@ -6,15 +6,16 @@ export const AuthProvider = ({ children }) => {
   const [currUser, setCurrUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
+  const baseUrl = "https://blog-app-n2gj.vercel.app"
   const login = async (input) => {
-    const res = await axios.post("http://localhost:5000/auth/login", input, {
+    const res = await axios.post(`${baseUrl}/auth/login`, input, {
       withCredentials: "true",
     });
     setCurrUser(res.data);
   };
 
   const logout = async () => {
-    await axios.post("http://localhost:5000/auth/logout");
+    await axios.post(`${baseUrl}/auth/logout`);
     setCurrUser(null);
   };
   useEffect(() => {
