@@ -9,7 +9,7 @@ const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/users", {
+        const res = await axios.get("https://blog-app-n2gj.vercel.app/users", {
           withCredentials: true,
         });
         setUsers(res.data);
@@ -28,7 +28,7 @@ const Users = () => {
       )
     ) {
       try {
-        await axios.delete(`http://localhost:5000/users/${userId}`, {
+        await axios.delete(`https://blog-app-n2gj.vercel.app/users/${userId}`, {
           withCredentials: true,
         });
         setUsers(users.filter((user) => user.id !== userId));
