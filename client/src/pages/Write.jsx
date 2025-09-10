@@ -48,7 +48,7 @@ const Write = () => {
       const formData = new FormData();
       formData.append("file", file);
       console.log("file >>>>>>>>>>>>>>>..", file);
-      const res = await axios.post("http://localhost:5000/upload", formData, {
+      const res = await axios.post("https://blog-app-n2gj.vercel.app/upload", formData, {
         withCredentials: true, // Ensure cookies are sent
       });
 
@@ -74,7 +74,7 @@ const Write = () => {
       const sanitizedDesc = sanitizeContent(value); // Sanitize the description
       if (state) {
         await axios.put(
-          `http://localhost:5000/posts/${state.id}`,
+          `https://blog-app-n2gj.vercel.app/posts/${state.id}`,
           {
             title,
             desc: sanitizedDesc, // Use sanitized description
@@ -86,7 +86,7 @@ const Write = () => {
         toast.success("Post updated Successfully");
       } else {
         await axios.post(
-          `http://localhost:5000/posts`,
+          `https://blog-app-n2gj.vercel.app/posts`,
           {
             title,
             desc: sanitizedDesc, // Use sanitized description
