@@ -10,7 +10,7 @@ import multer from "multer";
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", // Frontend ka origin
+    origin: "https://blog-app-clinet.vercel.app/", // Frontend ka origin
     credentials: true, // Agar cookies ya headers send karne hain to true rakho
   })
 );
